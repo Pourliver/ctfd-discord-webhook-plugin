@@ -53,10 +53,8 @@ def load(app):
                     webhook = DiscordWebhook(url=app.config['DISCORD_WEBHOOK_URL'])
 
                     user = get_current_user()
-                    team = get_current_team()
 
                     format_args = {
-                        "team": sanitize(team.name),
                         "user": sanitize(user.name),
                         "challenge": sanitize(challenge.name),
                         "solves": num_solves,
