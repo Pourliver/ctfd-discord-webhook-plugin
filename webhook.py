@@ -61,7 +61,8 @@ def load(app):
                         "challenge": sanitize(challenge.name),
                         "solves": num_solves,
                         "fsolves": ordinal(num_solves),
-                        "category": sanitize(challenge.category)
+                        "category": sanitize(challenge.category),
+                        "value": challenge.value
                     }
 
                     message = app.config['DISCORD_WEBHOOK_MESSAGE'].format(**format_args)
