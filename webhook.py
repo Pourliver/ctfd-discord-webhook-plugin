@@ -30,7 +30,7 @@ def load(app):
             if not ctftime():
                 return result
 
-            if hasattr("json", result):
+            if hasattr(result, "json"):
                 data = result.json
                 if isinstance(data, dict) and data.get("success") == True and isinstance(data.get("data"), dict) and data.get("data").get("status") == "correct":
                     if request.content_type != "application/json":
@@ -72,3 +72,4 @@ def load(app):
 
     app.view_functions['api.challenges_challenge_attempt'] = challenge_attempt_decorator(app.view_functions['api.challenges_challenge_attempt'])
  
+
