@@ -1,5 +1,4 @@
 from flask import request
-from werkzeug.wrappers.json import JSONMixin
 from CTFd.utils.dates import ctftime
 from CTFd.models import Challenges, Solves
 from CTFd.utils import config as ctfd_config
@@ -31,7 +30,7 @@ def load(app):
             if not ctftime():
                 return result
 
-            if isinstance(result, JSONMixin):
+            if hasattr("json", result):
                 data = result.json
                 if isinstance(data, dict) and data.get("success") == True and isinstance(data.get("data"), dict) and data.get("data").get("status") == "correct":
                     if request.content_type != "application/json":
